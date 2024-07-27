@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +28,7 @@ public class UserController {
 	
 	@GetMapping("/user")
 	public String user() {
-		return "Welcome Boys and Girls";
+		return "Access The User Collection";
 	}
 	
 	@GetMapping("/getUsers")
@@ -37,32 +38,22 @@ public class UserController {
 	}
 
 	@GetMapping("/getUser")
-	public String getUser( 
-			@RequestParam(value = "firstName", defaultValue = "Johnny") String firstName,
-			@RequestParam(value = "lastName", defaultValue = "Appleseed") String lastName,
-			@RequestParam(value = "userName", defaultValue = "jappleseed") String userName,
-			@RequestParam(value = "phone", defaultValue = "555-555-5555") String phone
-		) {
-		user.setFirstName(firstName);
-		user.setLastName(lastName);
+	public String getUser(@RequestParam(value = "id", defaultValue = "1234") String id) {
 		
-		String newUser = userSvc.getUser(user.getFirstName(), user.getLastName(), user.getUserName(), user.getPhone());
-		
-		return newUser;
+		String user = userSvc.getUser(id);
+		return user;
 	}
 	
-	@PostMapping("/addUser")
-	public User addUser(@RequestBody User user) {
-		User newUser = userSvc.addUser(user);
-		return newUser;
+	@PutMapping("/updateUser")
+	public User updateUser(@RequestBody User userToUpdate) {
+		user = userSvc.updateUser(userToUpdate);
+		return user;
 	}
-
-	/* 	
-		@GetMapping
-		@PostMapping
-		@PutMapping
-		@DeleteMapping
-		@PatchMapping
-	*/
+	
+	@DeleteMapping("/deleteUser")
+	public User deleteUser(@RequestParam(value = "id") String id) {
+		user = userSvc.deleteUser(id);
+		return user;
+	}
 
 }

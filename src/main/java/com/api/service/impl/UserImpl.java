@@ -11,9 +11,14 @@ import com.api.model.User;
 
 @Component("userImpl")
 public class UserImpl implements UserSvc {
-
+	
 	@Override
-	public String getUser(String firstName, String lastName, String userName, String phone) {
+	public String getUser(String id) {
+		String firstName = "Andy";
+		String lastName = " Reid";
+		String userName = "areid";
+		String phone = "7039067849";
+		
 		User user = new User(firstName, lastName, userName, phone);
         return user.toString();
     }
@@ -30,6 +35,18 @@ public class UserImpl implements UserSvc {
 	public User addUser(User user) {
 		User newUser = new User(user);
         return newUser;
+	}
+
+	@Override
+	public User updateUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User deleteUser(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
     
 }

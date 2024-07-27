@@ -3,10 +3,12 @@ package com.api.model;
 import java.io.Serializable;
 
 import org.springframework.stereotype.Component;
-//import org.projectlombok
+//import lombok.Getter;
+//import lombok.Setter;
 
-@Component("user")
 //@Getter
+//@Setter
+@Component("user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;

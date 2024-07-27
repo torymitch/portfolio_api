@@ -8,14 +8,16 @@ import com.api.model.User;
 
 @Component("userSvc")
 public interface UserSvc {
-
-//    public String getUser(String firstName, String lastName);
     
-    public User addUser(User user);
-
+	public String getUser(String id);
+	
 	public List<User> getUsers();
+	
+	public User addUser(User user);
+	
+	public User updateUser(User user);
 
-	public String getUser(String firstName, String lastName, String userName, String phone);
-
+	public User deleteUser(String id);
+	
 }
 	
