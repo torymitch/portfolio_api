@@ -1,5 +1,7 @@
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/ApiApplication.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/UserController.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/model/User.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/repository/UserRepository.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/service/UserSvc.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/service/dao/UserDao.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/service/impl/UserImpl.java
