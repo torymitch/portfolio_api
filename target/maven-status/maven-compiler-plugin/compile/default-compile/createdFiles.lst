@@ -1,5 +1,7 @@
-com/api/ApiApplication.class
-com/api/model/User.class
+com/api/service/dao/UserDao.class
 com/api/service/UserSvc.class
+com/api/repository/UserRepository.class
 com/api/service/impl/UserImpl.class
 com/api/controller/UserController.class
+com/api/ApiApplication.class
+com/api/model/User.class

@@ -1,6 +1,11 @@
 package com.api.model;
 
 import java.io.Serializable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 
 import org.springframework.stereotype.Component;
 //import lombok.Getter;
@@ -8,52 +13,66 @@ import org.springframework.stereotype.Component;
 
 //@Getter
 //@Setter
+@Entity
 @Component("user")
 public class User implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
-	private String firstName;
-	private String lastName;
-	private String userName;
-	private String phone;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 
-	public String getFirstName() { return firstName; }
-	public String getLastName() { return lastName; }
-	public String getUserName() { return userName; }
-	public String getPhone() { return phone; }
+	private String first_name;
+	private String last_name;
+	private String user_name;
+	private String phone_number;
+	private String email_address;
+
+	
+	public String getFirstName() { return first_name; }
+	public String getLastName() { return last_name; }
+	public String getUserName() { return user_name; }
+	public String getPhone() { return phone_number; }
+	public String email_address() { return email_address; }
 	
 
-	public void setFirstName(String firstName) { this.firstName = firstName; }
-	public void setLastName(String lastName) { this.lastName = lastName; }
-	public void setUserName(String userName) { this.userName = userName; }
-	public void setPhone(String phone) { this.phone = phone; }
+	public void setFirstName(String first_name) { this.first_name = first_name; }
+	public void setLastName(String last_name) { this.last_name = last_name; }
+	public void setUserName(String user_name) { this.user_name = user_name; }
+	public void setPhoneNumber(String phone_number) { this.phone_number = phone_number; }
+	public void setEmailAddress(String email_address) { this.email_address = email_address; }
   
 	public User() {
 		super();
-		this.firstName = "";
-		this.lastName = "";
-		this.userName = "";
-		this.phone = "";
+		this.first_name = "";
+		this.last_name = "";
+		this.user_name = "";
+		this.phone_number = "";
+		this.email_address = "";
+		
 	}
   
-	public User(String firstName, String lastName, String userName, String phone) {
+	public User(String first_name, String last_name, String user_name, String phone_number, String email_address) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-		this.phone = phone;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.user_name = user_name;
+		this.phone_number = phone_number;
+		this.email_address = email_address;
 	}
 	
 	public User(User user) {
 		super();
-		this.firstName = user.firstName;
-		this.lastName = user.lastName;
-		this.userName = user.userName;
-		this.phone = user.phone;
+		this.first_name = user.first_name;
+		this.last_name = user.last_name;
+		this.user_name = user.user_name;
+		this.phone_number = user.phone_number;
+		this.email_address = user.email_address;
 	}
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " " + userName + " " + phone;
+        return first_name + " " + last_name + " " + user_name + " " + phone_number + " " + email_address;
     } 
 }

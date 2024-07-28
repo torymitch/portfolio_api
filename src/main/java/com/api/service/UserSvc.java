@@ -1,7 +1,5 @@
 package com.api.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 import com.api.model.User;
@@ -11,7 +9,7 @@ public interface UserSvc {
     
 	public String getUser(String id);
 	
-	public List<User> getUsers();
+	public Iterable<User> getUsers();
 	
 	public User addUser(User user);
 	

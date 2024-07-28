@@ -1,7 +1,5 @@
 package com.api.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.api.model.User;
 import com.api.service.UserSvc;
-
 
 @CrossOrigin
 @RestController
@@ -32,11 +29,11 @@ public class UserController {
 	}
 	
 	@GetMapping("/getUsers")
-	public List<User> getUsers() {
-		List<User> userList = userSvc.getUsers();
-		return userList;
+	public Iterable<User> getUsers() {
+		System.out.print("Retrieve Users");
+		return userSvc.getUsers();
 	}
-
+	
 	@GetMapping("/getUser")
 	public String getUser(@RequestParam(value = "id", defaultValue = "1234") String id) {
 		
