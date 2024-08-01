@@ -41,6 +41,13 @@ public class UserController {
 		return user;
 	}
 	
+	@PutMapping("/addUser")
+	public User addUser(@RequestBody User user) {
+		user = userSvc.updateUser(user);
+		System.out.println("User Is " + user);
+		return user;
+	}
+	
 	@PutMapping("/updateUser")
 	public User updateUser(@RequestBody User userToUpdate) {
 		user = userSvc.updateUser(userToUpdate);
