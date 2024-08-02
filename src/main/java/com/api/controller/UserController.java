@@ -17,8 +17,8 @@ import com.api.service.UserSvc;
 @RestController
 public class UserController {
 	
-	@Autowired
-	private User user;
+//	@Autowired
+//	private User user;
 	
 	@Autowired
 	private UserSvc userSvc;
@@ -31,32 +31,41 @@ public class UserController {
 	@GetMapping("/getUsers")
 	public Iterable<User> getUsers() {
 		System.out.print("Retrieve Users");
+		System.out.print("What]");
 		return userSvc.getUsers();
 	}
 	
 	@GetMapping("/getUser")
-	public String getUser(@RequestParam(value = "id", defaultValue = "1234") String id) {
+	public String getUser(@RequestParam(value = "id", defaultValue = "1") String id) {
 		
 		String user = userSvc.getUser(id);
 		return user;
 	}
 	
-	@PutMapping("/addUser")
-	public User addUser(@RequestBody User user) {
-		user = userSvc.updateUser(user);
-		System.out.println("User Is " + user);
+	@PostMapping("/addUser")
+	public User addUser(@RequestBody User user,
+			@RequestParam(value = "first_name") String first_name,
+			@RequestParam(value = "last_name") String last_name,
+			@RequestParam(value = "phone_number") String phone_number,
+			@RequestParam(value = "user_name") String user_name,
+			@RequestParam(value = "email_address") String email_address
+			
+		) {
+		user = new User(first_name, last_name, user_name, email_address, phone_number);
+		System.out.println("Add The User " + user);
+		user = userSvc.addUser(user);
 		return user;
 	}
 	
 	@PutMapping("/updateUser")
-	public User updateUser(@RequestBody User userToUpdate) {
-		user = userSvc.updateUser(userToUpdate);
+	public User updateUser(@RequestBody User user) {
+		user = userSvc.updateUser(user);
 		return user;
 	}
 	
 	@DeleteMapping("/deleteUser")
 	public User deleteUser(@RequestParam(value = "id") String id) {
-		user = userSvc.deleteUser(id);
+		User user = userSvc.deleteUser(id);
 		return user;
 	}
 

@@ -33,8 +33,7 @@ public class UserImpl implements UserSvc {
 	
 	@Override
 	public User addUser(User user) {
-		User newUser = new User(user);
-        return newUser;
+		return userDao.saveUser(user);
 	}
 
 	@Override
