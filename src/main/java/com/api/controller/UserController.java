@@ -51,7 +51,7 @@ public class UserController {
 			@RequestParam(value = "email_address") String email_address
 			
 		) {
-		user = new User(first_name, last_name, user_name, email_address, phone_number);
+		user = new User(first_name, last_name, user_name, phone_number, email_address);
 		System.out.println("Add The User " + user);
 		user = userSvc.addUser(user);
 		return user;
@@ -64,9 +64,9 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/deleteUser")
-	public User deleteUser(@RequestParam(value = "id") String id) {
-		User user = userSvc.deleteUser(id);
-		return user;
+	public String deleteUser(@RequestParam(value = "id") Integer id) {
+		userSvc.deleteUser(id);
+		return "Success";
 	}
 
 }
