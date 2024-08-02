@@ -33,8 +33,7 @@ public class UserImpl implements UserSvc {
 	
 	@Override
 	public User addUser(User user) {
-		User newUser = new User(user);
-        return newUser;
+		return userDao.saveUser(user);
 	}
 
 	@Override
@@ -44,9 +43,8 @@ public class UserImpl implements UserSvc {
 	}
 
 	@Override
-	public User deleteUser(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteUser(Integer id) {
+		return userDao.deleteUser(id);
 	}	
     
 }

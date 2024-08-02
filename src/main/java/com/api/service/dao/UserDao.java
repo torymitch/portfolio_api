@@ -15,4 +15,13 @@ public class UserDao {
 	public Iterable<User> getUsers() {
 		return userRepository.findAll();
 	}
+	
+	public User saveUser(User user) {
+		return userRepository.save(user);
+	}
+
+	public String deleteUser(Integer id) {
+		userRepository.deleteById(id);
+		return "Success";
+	}
 }

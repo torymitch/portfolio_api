@@ -15,7 +15,7 @@ public interface UserSvc {
 	
 	public User updateUser(User user);
 
-	public User deleteUser(String id);
+	public String deleteUser(Integer id);
 	
 }
 	

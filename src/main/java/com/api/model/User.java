@@ -8,13 +8,10 @@ import jakarta.persistence.Id;
 
 
 import org.springframework.stereotype.Component;
-//import lombok.Getter;
-//import lombok.Setter;
 
-//@Getter
-//@Setter
 @Entity
 @Component("user")
+//public class User {
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -22,6 +19,13 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	private String first_name;
 	private String last_name;
@@ -52,6 +56,12 @@ public class User implements Serializable {
 		this.email_address = "";
 		
 	}
+	
+	public User(String first_name, String last_name) {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+	}
   
 	public User(String first_name, String last_name, String user_name, String phone_number, String email_address) {
 		super();
@@ -64,6 +74,7 @@ public class User implements Serializable {
 	
 	public User(User user) {
 		super();
+		this.id = user.id;
 		this.first_name = user.first_name;
 		this.last_name = user.last_name;
 		this.user_name = user.user_name;
@@ -72,7 +83,8 @@ public class User implements Serializable {
 	}
 
     @Override
-    public String toString() {
-        return first_name + " " + last_name + " " + user_name + " " + phone_number + " " + email_address;
-    } 
+	public String toString() {
+		return "User [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", user_name=" + user_name
+				+ ", phone_number=" + phone_number + ", email_address=" + email_address + "]";
+	} 
 }
