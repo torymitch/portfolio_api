@@ -72,6 +72,16 @@ public class User implements Serializable {
 		this.email_address = email_address;
 	}
 	
+	public User(Integer id, String first_name, String last_name, String user_name, String phone_number, String email_address) {
+		super();
+		this.id = id;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.user_name = user_name;
+		this.phone_number = phone_number;
+		this.email_address = email_address;
+	}
+	
 	public User(User user) {
 		super();
 		this.id = user.id;

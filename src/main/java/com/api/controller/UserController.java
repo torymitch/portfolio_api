@@ -58,7 +58,15 @@ public class UserController {
 	}
 	
 	@PutMapping("/updateUser")
-	public User updateUser(@RequestBody User user) {
+	public User updateUser(@RequestBody User user,
+			@RequestParam(value = "id") Integer id,
+			@RequestParam(value = "first_name") String first_name,
+			@RequestParam(value = "last_name") String last_name,
+			@RequestParam(value = "phone_number") String phone_number,
+			@RequestParam(value = "user_name") String user_name,
+			@RequestParam(value = "email_address") String email_address) {
+		user = new User(id, first_name, last_name, user_name, phone_number, email_address);
+		System.out.println("Add The User " + user);
 		user = userSvc.updateUser(user);
 		return user;
 	}

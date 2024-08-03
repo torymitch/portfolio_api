@@ -1,5 +1,7 @@
 package com.api.service.dao;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,5 +25,13 @@ public class UserDao {
 	public String deleteUser(Integer id) {
 		userRepository.deleteById(id);
 		return "Success";
+	}
+
+	public User updateUser(User user) {
+		Optional<User> userToUpd = userRepository.findById(user.getId());
+		if (userToUpd != null) {
+			return userRepository.save(user);
+		}
+		return null;
 	}
 }
