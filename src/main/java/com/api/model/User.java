@@ -1,6 +1,8 @@
 package com.api.model;
 
 import java.io.Serializable;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component("user")
-//public class User {
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -37,8 +38,8 @@ public class User implements Serializable {
 	public String getFirstName() { return first_name; }
 	public String getLastName() { return last_name; }
 	public String getUserName() { return user_name; }
-	public String getPhone() { return phone_number; }
-	public String email_address() { return email_address; }
+	public String getPhoneNumber() { return phone_number; }
+	public String getEmailAddress() { return email_address; }
 	
 
 	public void setFirstName(String first_name) { this.first_name = first_name; }
@@ -57,11 +58,11 @@ public class User implements Serializable {
 		
 	}
 	
-	public User(String first_name, String last_name) {
-		super();
-		this.first_name = first_name;
-		this.last_name = last_name;
-	}
+//	public User(String first_name, String last_name) {
+//		super();
+//		this.first_name = first_name;
+//		this.last_name = last_name;
+//	}
   
 	public User(String first_name, String last_name, String user_name, String phone_number, String email_address) {
 		super();

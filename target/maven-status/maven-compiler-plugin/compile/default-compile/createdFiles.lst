@@ -4,4 +4,6 @@ com/api/repository/UserRepository.class
 com/api/service/impl/UserImpl.class
 com/api/controller/UserController.class
 com/api/ApiApplication.class
+com/api/controller/TestController.class
+com/api/model/Test.class
 com/api/model/User.class
