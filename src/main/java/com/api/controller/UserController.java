@@ -1,5 +1,7 @@
 package com.api.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +19,6 @@ import com.api.service.UserSvc;
 @RestController
 public class UserController {
 	
-//	@Autowired
-//	private User user;
-	
 	@Autowired
 	private UserSvc userSvc;
 	
@@ -30,20 +29,20 @@ public class UserController {
 	
 	@GetMapping("/getUsers")
 	public Iterable<User> getUsers() {
-		System.out.print("Retrieve Users");
-		System.out.print("What]");
+		System.out.print("Retrieve All Users");
 		return userSvc.getUsers();
 	}
 	
 	@GetMapping("/getUser")
-	public String getUser(@RequestParam(value = "id", defaultValue = "1") String id) {
+	public Optional<User> getUser(@RequestParam(value = "id") Integer id) {
 		
-		String user = userSvc.getUser(id);
+		Optional<User> user = userSvc.getUserById(id);
 		return user;
 	}
 	
 	@PostMapping("/addUser")
-	public User addUser(@RequestBody User user,
+	public User addUser(
+			@RequestBody User user,
 			@RequestParam(value = "first_name") String first_name,
 			@RequestParam(value = "last_name") String last_name,
 			@RequestParam(value = "phone_number") String phone_number,

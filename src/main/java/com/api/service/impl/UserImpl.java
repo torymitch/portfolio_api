@@ -3,6 +3,8 @@ package com.api.service.impl;
 import com.api.service.UserSvc;
 import com.api.service.dao.UserDao;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,15 +17,8 @@ public class UserImpl implements UserSvc {
 	private UserDao userDao;
 	
 	@Override
-	public String getUser(String id) {
-		String firstName = "Andy";
-		String lastName = " Reid";
-		String userName = "areid";
-		String phone = "7039067849";
-		String email = "testEmail@somewhere.com";
-		
-		User user = new User(firstName, lastName, userName, phone, email);
-        return user.toString();
+	public Optional<User> getUserById(Integer id) {
+		return userDao.getUserById(id);
     }
 	
 	@Override
@@ -44,6 +39,6 @@ public class UserImpl implements UserSvc {
 	@Override
 	public String deleteUser(Integer id) {
 		return userDao.deleteUser(id);
-	}	
+	}
     
 }

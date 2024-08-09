@@ -1,5 +1,7 @@
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/ApiApplication.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/TestController.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/UserController.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/model/Test.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/model/User.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/repository/UserRepository.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/service/UserSvc.java

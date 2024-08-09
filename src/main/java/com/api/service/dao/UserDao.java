@@ -34,4 +34,8 @@ public class UserDao {
 		}
 		return null;
 	}
+
+	public Optional<User> getUserById(Integer id) {
+		return userRepository.findById(id);
+	}
 }
