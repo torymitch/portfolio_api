@@ -1,5 +1,8 @@
 package com.api.service.dao;
 
+//import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +18,18 @@ public class BuyDao {
 	public Buy saveBuy(Buy buy) {
 		return buyRepository.save(buy);
 	}
+	
+	public Optional<Buy> findById(Integer id) {
+		id = 3;
+		Optional<Buy> buy = buyRepository.findById(id);
+		return buy;
+	}
+
+//	public List<Buy> findAllBuysByPositionId(Integer id) {
+//		List<Buy> buys = buyRepository.findAllByPositionId(id);
+//		return buys;
+//	}
+	
 
 
 }

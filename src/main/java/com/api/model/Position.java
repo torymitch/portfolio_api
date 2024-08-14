@@ -25,6 +25,7 @@ public class Position implements Serializable {
 	private Float cost;
 	private Float price;
 	private Float total;
+	private Float shares;
 
 	public Integer getId() { return id; }
 	public void setId(Integer id) { this.id = id; }
@@ -43,6 +44,9 @@ public class Position implements Serializable {
 	
 	public Float getTotal() { return total; }
 	public void setTotal(Float total) { this.total = total; }
+	
+	public Float getShares() { return shares; }
+	public void setShares(Float shares) { this.shares = shares; }
 	
 	public static long getSerialversionuid() {
 		return serialVersionUID;

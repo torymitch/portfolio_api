@@ -30,7 +30,7 @@ public class BuyController {
 			@RequestParam(value = "cost") Float cost
 			
 			) {
-		System.out.println("Add The Buy");
+		System.out.println("Purchase Made");
 		Float cost_per_share = cost / shares;
 		Float total_cost = cost * shares;
 		LocalDate date = LocalDate.now();
