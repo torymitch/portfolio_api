@@ -1,5 +1,9 @@
 package com.api.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,5 +22,21 @@ public class BuyImpl implements BuySvc {
 	public Buy addBuy(Buy buy) {
 		return buyDao.saveBuy(buy);
 	}
+	
+	@Override
+	public Optional<Buy> findById(Integer id) {
+		return buyDao.findById(id);
+	}
+	
+	@Override
+	public List<Buy> findByPositionId(Integer id) {
+		return buyDao.findByPositionId(id);
+	}
+	
+	@Override
+	public List<Buy> findByShares(Float shares) {
+		return buyDao.findByShares(shares);
+	}
+	
 
 }

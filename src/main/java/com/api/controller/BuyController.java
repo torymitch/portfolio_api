@@ -24,18 +24,18 @@ public class BuyController {
 	@PostMapping("/addBuy")
 	public Buy addBuy(
 			@RequestBody Buy buy,
-			@RequestParam(value = "account_id") Integer account_id,
-			@RequestParam(value = "position_id") Integer position_id,
+			@RequestParam(value = "accountId") Integer accountId,
+			@RequestParam(value = "positionId") Integer positionId,
 			@RequestParam(value = "shares") Float shares,
 			@RequestParam(value = "cost") Float cost
 			
 			) {
-		System.out.println("Add The Buy");
-		Float cost_per_share = cost / shares;
-		Float total_cost = cost * shares;
+		System.out.println("Purchase Made");
+		Float costPerShare = cost / shares;
+		Float totalCost = cost * shares;
 		LocalDate date = LocalDate.now();
 		
-		buy = new Buy(account_id, position_id, shares, cost, cost_per_share, total_cost, date);
+		buy = new Buy(accountId, positionId, shares, cost, costPerShare, totalCost, date);
 		return buySvc.addBuy(buy);
 	}
 }
