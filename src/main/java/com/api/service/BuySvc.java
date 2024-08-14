@@ -1,6 +1,6 @@
 package com.api.service;
 
-//import java.util.List;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
@@ -14,7 +14,9 @@ public interface BuySvc {
 	
 	public Optional<Buy> findById(Integer id);
 	
-//	public List<Buy> findAllBuysByPositionId(Integer positionId);
+	public List<Buy> findByPositionId(Integer positionId);
+	
+	public List<Buy> findByShares(Float shares);
 
 	
 }

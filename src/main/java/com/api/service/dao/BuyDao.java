@@ -1,6 +1,6 @@
 package com.api.service.dao;
 
-//import java.util.List;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +25,15 @@ public class BuyDao {
 		return buy;
 	}
 
-//	public List<Buy> findAllBuysByPositionId(Integer id) {
-//		List<Buy> buys = buyRepository.findAllByPositionId(id);
-//		return buys;
-//	}
-	
+	public List<Buy> findByPositionId(Integer id) {
+		List<Buy> buys = buyRepository.findByPositionId(id);
+		return buys;
+	}
+
+	public List<Buy> findByShares(Float shares) {
+		List<Buy> buys = buyRepository.findByShares(shares);
+		return buys;
+	}
 
 
 }
