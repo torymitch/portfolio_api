@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.model.Account;
-import com.api.model.Position;
 import com.api.service.AccountSvc;
 
 @CrossOrigin
