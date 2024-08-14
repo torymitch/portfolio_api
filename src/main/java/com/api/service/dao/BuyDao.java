@@ -35,5 +35,9 @@ public class BuyDao {
 		return buys;
 	}
 
+	public void deleteBuy(Integer id) {
+		buyRepository.deleteById(id);
+	}
+
 
 }

@@ -47,9 +47,9 @@ public class PositionImpl implements PositionSvc {
 					position.setTotal(position.getTotal() + buy.getCost());
 				}
 				if (position.getCost() == null) {
-					position.setCost(buy.getTotalCost());	
+					position.setCost(buy.getCost());	
 				} else {
-					position.setCost(position.getCost() + buy.getTotalCost());
+					position.setCost(position.getCost() + buy.getCost());
 				}
 				
 			});
@@ -69,6 +69,12 @@ public class PositionImpl implements PositionSvc {
 
 	@Override
 	public String deletePosition(Integer id) {
+		List<Buy> buys = buySvc.findByPositionId(id);
+		buys.forEach((buy) -> {
+			buySvc.deleteBuy(buy.getId());
+			
+		});
+		
 		return positionDao.deletePosition(id);
 	}
 
