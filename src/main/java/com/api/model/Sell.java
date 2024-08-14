@@ -11,8 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-@Component("buy")
-public class Buy implements Serializable {
+@Component("sell")
+public class Sell implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -22,9 +22,8 @@ public class Buy implements Serializable {
 	private Integer positionId;
 	private Integer accountId;
 	private LocalDate date;
-	private Float cost;
+	private Float soldPrice;
 	private Float shares;
-	private Float costPerShare;
 	
 	public Integer getId() { return id; }
 	public void setId(Integer id) { this.id = id; }
@@ -39,43 +38,38 @@ public class Buy implements Serializable {
 	public LocalDate getDate() { return date; }
 	public void setDate(LocalDate date) { this.date = date; }
 	
-	public Float getCost() { return cost; }
-	public void setCost(Float cost) { this.cost = cost; }
+	public Float getSoldPrice() { return soldPrice; }
+	public void setSoldPrice(Float soldPrice) { this.soldPrice = soldPrice; }
 	
 	public Float getShares() { return shares; }
 	public void setShares(Float shares) { this.shares = shares; }
-	
-	public Float getCostPerShare() { return costPerShare; }
-	public void setCostPerShare(Float costPerShare) { this.costPerShare = costPerShare; }
-		
+			
 	public static long getSerialversionuid() { return serialVersionUID; }
 	
-	public Buy() {
+	public Sell() {
 		super();
 		this.setId(null);
 		this.setAccountId(null);
 		this.setPositionId(null);
 		this.setShares(null);
-		this.setCost(null);
-		this.setCostPerShare(null);
+		this.setSoldPrice(null);
 		this.setDate(null);
 	}
 	
-	public Buy(Integer accountId, Integer positionId, Float shares, 
-			Float cost, Float costPerShare, Float totalCost, LocalDate date) {
+	public Sell(Integer accountId, Integer positionId, Float shares, 
+			Float soldPrice, LocalDate date) {
 		super();
 		this.setAccountId(accountId);
 		this.setPositionId(positionId);
 		this.setShares(shares);
-		this.setCost(cost);
-		this.setCostPerShare(costPerShare);
+		this.setSoldPrice(soldPrice);
 		this.setDate(date);
 	}
 	
 	@Override
 	public String toString() {
-		return "Buy [id=" + id + ", positionId=" + positionId + ", accountId=" + accountId + ", date=" + date
-				+ ", cost=" + cost + ", shares=" + shares + ", costPerShare=" + costPerShare + "]";
+		return "Sell [id=" + id + ", positionId=" + positionId + ", accountId=" + accountId + ", date=" + date
+				+ ", soldPrice=" + soldPrice + ", shares=" + shares + "]";
 	}
 	
 	

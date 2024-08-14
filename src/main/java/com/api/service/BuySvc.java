@@ -12,6 +12,8 @@ public interface BuySvc {
 	
 	public Buy addBuy(Buy buy);
 	
+	public void deleteBuy(Integer id);
+	
 	public Optional<Buy> findById(Integer id);
 	
 	public List<Buy> findByPositionId(Integer positionId);

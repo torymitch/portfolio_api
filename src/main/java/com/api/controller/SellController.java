@@ -8,30 +8,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.model.Buy;
-import com.api.service.BuySvc;
+import com.api.model.Sell;
+import com.api.service.SellSvc;
 
 @CrossOrigin
 @RestController
-public class BuyController {
+public class SellController {
 	
 	@Autowired
-	private BuySvc buySvc;
+	private SellSvc sellSvc;
 
 	@CrossOrigin
-	@PostMapping("/addBuy")
-	public Buy addBuy(
-			@RequestBody Buy buy,
+	@PostMapping("/addSell")
+	public Sell addSell(
+			@RequestBody Sell sell,
 			@RequestParam(value = "accountId") Integer accountId,
 			@RequestParam(value = "positionId") Integer positionId,
 			@RequestParam(value = "shares") Float shares,
-			@RequestParam(value = "cost") Float cost
+			@RequestParam(value = "soldPrice") Float soldPrice
 			
 			) {
-		Float costPerShare = cost / shares;
-		Float totalCost = cost;
 		
-		buy = new Buy(accountId, positionId, shares, cost, costPerShare, totalCost, LocalDate.now());
-		return buySvc.addBuy(buy);
+		sell = new Sell(accountId, positionId, shares, soldPrice, LocalDate.now());
+		return sellSvc.addSell(sell);
 	}
 }
