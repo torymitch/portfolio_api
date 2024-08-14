@@ -34,14 +34,24 @@ public class PositionImpl implements PositionSvc {
 		
 		Iterable<Position> positions = positionDao.getPositions();
 		positions.forEach( (position) -> {
-//			List<Buy> buys = buySvc.findByShares(56f);
 			List<Buy> buys = buySvc.findByPositionId(position.getId());
-//			Optional<Buy> optionalBuy = buySvc.findById(position.getId());
-//			Buy buy = optionalBuy.get();
 			buys.forEach((buy) -> {
-				position.setShares(buy.getShares());
-				position.setTotal(buy.getCost());
-				position.setCost(buy.getTotalCost());
+				if (position.getShares() == null) {
+					position.setShares(buy.getShares());
+				} else {
+					position.setShares(position.getShares() + buy.getShares());
+				}
+				if (position.getTotal() == null) {
+					position.setTotal(buy.getCost());	
+				} else {
+					position.setTotal(position.getTotal() + buy.getCost());
+				}
+				if (position.getCost() == null) {
+					position.setCost(buy.getTotalCost());	
+				} else {
+					position.setCost(position.getCost() + buy.getTotalCost());
+				}
+				
 			});
 		});
 		return positions;
