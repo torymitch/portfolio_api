@@ -22,7 +22,7 @@ public class Buy implements Serializable {
 	private Integer positionId;
 	private Integer accountId;
 	private LocalDate date;
-	private Float cost;
+	private Float totalCost;
 	private Float shares;
 	private Float costPerShare;
 	
@@ -39,8 +39,8 @@ public class Buy implements Serializable {
 	public LocalDate getDate() { return date; }
 	public void setDate(LocalDate date) { this.date = date; }
 	
-	public Float getCost() { return cost; }
-	public void setCost(Float cost) { this.cost = cost; }
+	public Float getTotalCost() { return totalCost; }
+	public void setTotalCost(Float totalCost) { this.totalCost = totalCost; }
 	
 	public Float getShares() { return shares; }
 	public void setShares(Float shares) { this.shares = shares; }
@@ -56,18 +56,18 @@ public class Buy implements Serializable {
 		this.setAccountId(null);
 		this.setPositionId(null);
 		this.setShares(null);
-		this.setCost(null);
+		this.setTotalCost(null);
 		this.setCostPerShare(null);
 		this.setDate(null);
 	}
 	
 	public Buy(Integer accountId, Integer positionId, Float shares, 
-			Float cost, Float costPerShare, Float totalCost, LocalDate date) {
+			Float costPerShare, Float totalCost, LocalDate date) {
 		super();
 		this.setAccountId(accountId);
 		this.setPositionId(positionId);
 		this.setShares(shares);
-		this.setCost(cost);
+		this.setTotalCost(totalCost);
 		this.setCostPerShare(costPerShare);
 		this.setDate(date);
 	}
@@ -75,7 +75,7 @@ public class Buy implements Serializable {
 	@Override
 	public String toString() {
 		return "Buy [id=" + id + ", positionId=" + positionId + ", accountId=" + accountId + ", date=" + date
-				+ ", cost=" + cost + ", shares=" + shares + ", costPerShare=" + costPerShare + "]";
+				+ ", totalCost=" + totalCost + ", shares=" + shares + ", costPerShare=" + costPerShare + "]";
 	}
 	
 	

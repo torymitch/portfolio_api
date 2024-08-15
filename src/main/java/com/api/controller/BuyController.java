@@ -25,13 +25,12 @@ public class BuyController {
 			@RequestParam(value = "accountId") Integer accountId,
 			@RequestParam(value = "positionId") Integer positionId,
 			@RequestParam(value = "shares") Float shares,
-			@RequestParam(value = "cost") Float cost
+			@RequestParam(value = "costPerShare") Float costPerShare,
+			@RequestParam(value = "totalCost") Float totalCost
 			
 			) {
-		Float costPerShare = cost / shares;
-		Float totalCost = cost;
 		
-		buy = new Buy(accountId, positionId, shares, cost, costPerShare, totalCost, LocalDate.now());
+		buy = new Buy(accountId, positionId, shares, costPerShare, totalCost, LocalDate.now());
 		return buySvc.addBuy(buy);
 	}
 }
