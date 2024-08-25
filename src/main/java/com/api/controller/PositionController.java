@@ -1,6 +1,8 @@
 package com.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,13 +23,13 @@ public class PositionController {
 	private PositionSvc positionSvc;
 	
 	@GetMapping("/getPositions")
-	public Iterable<Position> getPositions() {
+	public ResponseEntity<Iterable<Position>> getPositions() {
 		System.out.print("Retrieve All Positions");
-		return positionSvc.getPositions();
+		return ResponseEntity.ok(positionSvc.getPositions());
 	}
 	
 	@PutMapping("/updatePosition")
-	public Position updatePosition(
+	public ResponseEntity<Position> updatePosition(
 			@RequestBody Position position,
 			@RequestParam(value = "id") Integer id,
 			@RequestParam(value = "name") String name,
@@ -37,11 +39,11 @@ public class PositionController {
 			@RequestParam(value = "total") Float total
 			) {
 		position = new Position(id, name, symbol, price, cost, total);
-		return positionSvc.updatePosition(position);
+		return ResponseEntity.ok(positionSvc.updatePosition(position));
 	}
 	
 	@PostMapping("/addPosition")
-	public Position addPosition(
+	public ResponseEntity<Position> addPosition(
 			@RequestBody Position position,
 			@RequestParam(value = "name") String name,
 			@RequestParam(value = "symbol") String symbol,
@@ -50,13 +52,13 @@ public class PositionController {
 			@RequestParam(value = "total") Float total
 			) {
 		position = new Position(name, symbol, price, cost, total);
-		return positionSvc.addPosition(position);
+		return ResponseEntity.ok(positionSvc.addPosition(position));
 	}
 
 	@DeleteMapping("/deletePosition")
-	public String deletePosition(@RequestParam(value = "id") Integer id) {
+	public BodyBuilder deletePosition(@RequestParam(value = "id") Integer id) {
 		positionSvc.deletePosition(id);
-		return "Success";
+		return ResponseEntity.ok();
 	}	
 	
 }

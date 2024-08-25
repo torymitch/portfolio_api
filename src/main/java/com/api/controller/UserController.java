@@ -3,6 +3,8 @@ package com.api.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,9 +30,9 @@ public class UserController {
 	}
 	
 	@GetMapping("/getUsers")
-	public Iterable<User> getUsers() {
+	public ResponseEntity<Iterable<User>> getUsers() {
 		System.out.print("Retrieve All Users");
-		return userSvc.getUsers();
+		return ResponseEntity.ok(userSvc.getUsers());
 	}
 	
 	@GetMapping("/getUser")
@@ -41,7 +43,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/addUser")
-	public User addUser(
+	public ResponseEntity<User> addUser(
 			@RequestBody User user,
 			@RequestParam(value = "first_name") String first_name,
 			@RequestParam(value = "last_name") String last_name,
@@ -53,11 +55,11 @@ public class UserController {
 		user = new User(first_name, last_name, user_name, phone_number, email_address);
 		System.out.println("Add The User " + user);
 		user = userSvc.addUser(user);
-		return user;
+		return ResponseEntity.ok(user);
 	}
 	
 	@PutMapping("/updateUser")
-	public User updateUser(@RequestBody User user,
+	public ResponseEntity<User> updateUser(@RequestBody User user,
 			@RequestParam(value = "id") Integer id,
 			@RequestParam(value = "first_name") String first_name,
 			@RequestParam(value = "last_name") String last_name,
@@ -67,13 +69,13 @@ public class UserController {
 		user = new User(id, first_name, last_name, user_name, phone_number, email_address);
 		System.out.println("Add The User " + user);
 		user = userSvc.updateUser(user);
-		return user;
+		return ResponseEntity.ok(user);
 	}
 	
 	@DeleteMapping("/deleteUser")
-	public String deleteUser(@RequestParam(value = "id") Integer id) {
+	public BodyBuilder deleteUser(@RequestParam(value = "id") Integer id) {
 		userSvc.deleteUser(id);
-		return "Success";
+		return ResponseEntity.ok();
 	}
 
 }

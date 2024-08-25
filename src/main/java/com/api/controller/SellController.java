@@ -2,6 +2,7 @@ package com.api.controller;
 
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class SellController {
 
 	@CrossOrigin
 	@PostMapping("/addSell")
-	public Sell addSell(
+	public ResponseEntity<Sell> addSell(
 			@RequestBody Sell sell,
 			@RequestParam(value = "accountId") Integer accountId,
 			@RequestParam(value = "positionId") Integer positionId,
@@ -30,6 +31,6 @@ public class SellController {
 			) {
 		
 		sell = new Sell(accountId, positionId, shares, soldPrice, LocalDate.now());
-		return sellSvc.addSell(sell);
+		return ResponseEntity.ok(sellSvc.addSell(sell));
 	}
 }
