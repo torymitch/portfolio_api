@@ -1,5 +1,6 @@
 package com.api.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,7 @@ import com.api.model.Portfolio;
 public class PortfolioController {
 	
 	@PostMapping("/addPortfolio")
-	public Portfolio addTest(@RequestBody Portfolio portfolio) {
-		return portfolio;
+	public ResponseEntity<Portfolio> addTest(@RequestBody Portfolio portfolio) {
+		return ResponseEntity.ok(portfolio);
 	}
 }
