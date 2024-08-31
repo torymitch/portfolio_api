@@ -61,17 +61,6 @@ public class Buy implements Serializable {
 		this.setDate(null);
 	}
 	
-	public Buy(Integer accountId, Integer positionId, Float shares, 
-			Float costPerShare, Float totalCost, LocalDate date) {
-		super();
-		this.setAccountId(accountId);
-		this.setPositionId(positionId);
-		this.setShares(shares);
-		this.setTotalCost(totalCost);
-		this.setCostPerShare(costPerShare);
-		this.setDate(date);
-	}
-	
 	@Override
 	public String toString() {
 		return "Buy [id=" + id + ", positionId=" + positionId + ", accountId=" + accountId + ", date=" + date

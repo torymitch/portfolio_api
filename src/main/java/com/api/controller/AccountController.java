@@ -46,8 +46,7 @@ public class AccountController {
 	}
 		
 	@PutMapping("/updateAccount")
-	public ResponseEntity<Object> updateAccount(
-			@RequestBody Account account) {
+	public ResponseEntity<Object> updateAccount(@RequestBody Account account) {
 		try {
 			Account updAccount = accountSvc.updateAccount(account);
 			if (!ObjectUtils.isEmpty(updAccount)) {
