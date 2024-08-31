@@ -1,8 +1,10 @@
 package com.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,42 +25,48 @@ public class PositionController {
 	private PositionSvc positionSvc;
 	
 	@GetMapping("/getPositions")
-	public ResponseEntity<Iterable<Position>> getPositions() {
-		System.out.print("Retrieve All Positions");
-		return ResponseEntity.ok(positionSvc.getPositions());
+	public ResponseEntity<Object> getPositions() {
+		try {
+			return ResponseEntity.ok(positionSvc.getPositions());
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
 	}
 	
 	@PutMapping("/updatePosition")
-	public ResponseEntity<Position> updatePosition(
-			@RequestBody Position position,
-			@RequestParam(value = "id") Integer id,
-			@RequestParam(value = "name") String name,
-			@RequestParam(value = "symbol") String symbol,
-			@RequestParam(value = "price") Float price,
-			@RequestParam(value = "cost") Float cost,
-			@RequestParam(value = "total") Float total
-			) {
-		position = new Position(id, name, symbol, price, cost, total);
-		return ResponseEntity.ok(positionSvc.updatePosition(position));
+	public ResponseEntity<Object> updatePosition(@RequestBody Position position) {		
+		try {
+			Position updPosition = positionSvc.updatePosition(position);
+			if (!ObjectUtils.isEmpty(updPosition)) {
+				return (ResponseEntity.ok(updPosition));	
+			}
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
+		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Position Not Created");
 	}
 	
 	@PostMapping("/addPosition")
-	public ResponseEntity<Position> addPosition(
-			@RequestBody Position position,
-			@RequestParam(value = "name") String name,
-			@RequestParam(value = "symbol") String symbol,
-			@RequestParam(value = "price") Float price,
-			@RequestParam(value = "cost") Float cost,
-			@RequestParam(value = "total") Float total
-			) {
-		position = new Position(name, symbol, price, cost, total);
-		return ResponseEntity.ok(positionSvc.addPosition(position));
+	public ResponseEntity<Object> addPosition(@RequestBody Position position) {
+		try {
+			Position newPosition = positionSvc.addPosition(position);
+			if (!ObjectUtils.isEmpty(newPosition)) {
+				return (ResponseEntity.ok(newPosition));	
+			}
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
+		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Position Not Created");
+
 	}
 
 	@DeleteMapping("/deletePosition")
-	public BodyBuilder deletePosition(@RequestParam(value = "id") Integer id) {
-		positionSvc.deletePosition(id);
-		return ResponseEntity.ok();
+	public ResponseEntity<Object> deletePosition(@RequestParam(value = "id") Integer id) {
+		try {
+			return ResponseEntity.ok(positionSvc.deletePosition(id));	
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
 	}	
 	
 }

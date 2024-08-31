@@ -50,7 +50,7 @@ public class AccountController {
 			@RequestBody Account account) {
 		try {
 			Account updAccount = accountSvc.updateAccount(account);
-			if (updAccount == account) {
+			if (!ObjectUtils.isEmpty(updAccount)) {
 				return (ResponseEntity.ok(updAccount));	
 			}
 		} catch (Exception e) {

@@ -48,34 +48,6 @@ public class Account implements Serializable {
 		
 	}
 	
-//	public Account(String name, String number) {
-//		super();
-//		this.setName(name);
-//		this.setNumber(number);
-//	}
-//	
-//	public Account(String name, String number, Integer user_id) {
-//		super();
-//		this.setName(name);
-//		this.setNumber(number);
-//		this.setUserId(user_id);
-//	}
-//	
-//	public Account(Integer id, String name, String number) {
-//		super();
-//		this.setId(id);
-//		this.setName(name);
-//		this.setNumber(number);
-//	}
-//	
-//	public Account(Integer id, String name, String number, Integer user_id) {
-//		super();
-//		this.setId(id);
-//		this.setName(name);
-//		this.setNumber(number);
-//		this.setUserId(user_id);
-//	}
-	
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", name=" + name + ", number=" + number + ", user_id=" + user_id+"]";

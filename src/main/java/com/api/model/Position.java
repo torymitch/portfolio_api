@@ -62,41 +62,6 @@ public class Position implements Serializable {
 		
 	}
 	
-	public Position(String name, String symbol) {
-		super();
-		this.setName(name);
-		this.setSymbol(symbol);
-	}
-	
-	public Position(String name, String symbol, Float price, Float coast, Float total) {
-		super();
-		this.setName(name);
-		this.setSymbol(symbol);
-		this.setName(name);
-		this.setPrice(price);
-		this.setTotal(total);
-	}
-	
-	public Position(Integer id, String name, String symbol, Float price, Float coast, Float total) {
-		super();
-		this.setId(id);
-		this.setName(name);
-		this.setSymbol(symbol);
-		this.setName(name);
-		this.setPrice(price);
-		this.setTotal(total);
-	}
-	
-	public Position(Position position) {
-		super();
-		this.id = position.id;
-		this.name = position.name;
-		this.symbol = position.symbol;
-		this.cost = position.cost;
-		this.price = position.price;
-		this.total = position.total;
-	}
-	
 	@Override
 	public String toString() {
 		return "Position [id=" + id + ", name=" + name + ", symbol=" + symbol + ", cost=" + cost + ", price=" + price + ", total=" + total
