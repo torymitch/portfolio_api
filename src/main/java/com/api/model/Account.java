@@ -2,7 +2,6 @@ package com.api.model;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +11,7 @@ import jakarta.persistence.Id;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Component("account")
+@Component("Account")
 public class Account implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -42,30 +41,40 @@ public class Account implements Serializable {
 	
 	public Account() {
 		super();
+		this.id = -1;
 		this.name = "";
 		this.number = "";
+		this.user_id = -1;
+		
 	}
 	
-	public Account(String name, String number) {
-		super();
-		this.setName(name);
-		this.setNumber(number);
-	}
-	
-	public Account(Integer id, String name, String number) {
-		super();
-		this.setId(id);
-		this.setName(name);
-		this.setNumber(number);
-	}
-	
-	public Account(Integer id, String name, String number, Integer user_id) {
-		super();
-		this.setId(id);
-		this.setName(name);
-		this.setNumber(number);
-		this.setUserId(user_id);
-	}
+//	public Account(String name, String number) {
+//		super();
+//		this.setName(name);
+//		this.setNumber(number);
+//	}
+//	
+//	public Account(String name, String number, Integer user_id) {
+//		super();
+//		this.setName(name);
+//		this.setNumber(number);
+//		this.setUserId(user_id);
+//	}
+//	
+//	public Account(Integer id, String name, String number) {
+//		super();
+//		this.setId(id);
+//		this.setName(name);
+//		this.setNumber(number);
+//	}
+//	
+//	public Account(Integer id, String name, String number, Integer user_id) {
+//		super();
+//		this.setId(id);
+//		this.setName(name);
+//		this.setNumber(number);
+//		this.setUserId(user_id);
+//	}
 	
 	@Override
 	public String toString() {

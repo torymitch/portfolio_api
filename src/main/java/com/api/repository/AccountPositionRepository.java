@@ -18,13 +18,20 @@ public interface AccountPositionRepository extends CrudRepository<AccountPositio
 //			+ "WHERE ap.accountId = ?1")
 //	List<AccountPosition> findByAccountId(Integer id);
 	
-	@Query("select ap.accountId, ap.positionId "
-			+ "FROM AccountPosition ap "
-			+ "WHERE ap.accountId=?1")
+//	@Query("select ap.accountId, ap.positionId "
+//			+ "FROM AccountPosition ap "
+//			+ "WHERE ap.accountId=?1")
+//	List<AccountPosition> findByAccountId(Integer id);
+	
 	List<AccountPosition> findByAccountId(Integer id);
 	
 	
-	@Query("select ap FROM AccountPosition ap WHERE ap.positionId=?1")
+//	@Query("select ap FROM AccountPosition ap WHERE ap.positionId=?1")
+//	List<AccountPosition> findByPositionId(Integer id);
+	
 	List<AccountPosition> findByPositionId(Integer id);
+	
+	List<AccountPosition> findByAccountIdAndPositionId(Integer accountId, Integer positionId);
+	
 
 }

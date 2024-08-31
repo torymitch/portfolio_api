@@ -20,5 +20,8 @@ public interface BuySvc {
 	
 	public List<Buy> findByShares(Float shares);
 
+	public List<Buy> fetchBuysByAccountIdAndPositionId(Integer accountId, Integer positionId);
+
+	public List<Buy> fetchBuysByAccountId(Integer id);
 	
 }

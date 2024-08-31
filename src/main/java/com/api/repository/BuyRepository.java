@@ -18,6 +18,10 @@ public interface BuyRepository extends CrudRepository<Buy, Integer> {
 
 	List<Buy> findByPositionId(Integer id);
 
+	List<Buy> findByAccountIdAndPositionId(Integer accountId, Integer positionId);
+
+	List<Buy> findByAccountId(Integer id);
+
 //	Optional<Buy> findById(Integer i);
 
 }
