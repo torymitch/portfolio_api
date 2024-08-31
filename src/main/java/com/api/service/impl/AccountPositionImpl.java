@@ -33,4 +33,16 @@ public class AccountPositionImpl implements AccountPositionSvc {
 		accountPositionDao.deleteAccountPosition(id);
 	}
 
+	@Override
+	public AccountPosition addAccountPosition(AccountPosition accountPosition) {
+		accountPositionDao.saveAccountPoisition(accountPosition);
+		return null;
+	}
+
+	@Override
+	public Iterable<AccountPosition> findByAccountIdAndPositionId(Integer accountId, Integer positionId) {
+		
+		return accountPositionDao.findByAccountIdAndPositionId(accountId, positionId);
+	}
+
 }

@@ -1,7 +1,9 @@
 package com.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,35 +24,47 @@ public class AccountController {
 	private AccountSvc accountSvc;
 
 	@GetMapping("/getAccounts")
-	public ResponseEntity<Iterable<Account>> getAccounts() {
-		return ResponseEntity.ok(accountSvc.getAccounts());
+	public ResponseEntity<Object> getAccounts() {
+		try {
+			return ResponseEntity.ok(accountSvc.getAccounts());
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
 	}
 	
 	@PostMapping("/addAccount")
-	public ResponseEntity<Account> addAccount(
-		@RequestBody Account account,
-		@RequestParam(value = "name") String name,
-		@RequestParam(value = "number") String number,
-		@RequestParam(value = "user_id") Integer user_id
-	) {
-		account = new Account(name, number);
-		return ResponseEntity.ok(accountSvc.addAccount(account));
+	public ResponseEntity<Object> addAccount(@RequestBody Account account) {
+		try {
+			Account newAccount = accountSvc.addAccount(account);
+			if (!ObjectUtils.isEmpty(newAccount)) {
+				return (ResponseEntity.ok(newAccount));	
+			}
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
+		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Account Not Created");
 	}
-	
+		
 	@PutMapping("/updateAccount")
-	public ResponseEntity<Account> updateAccount(
-			@RequestBody Account account,
-			@RequestParam(value = "id") Integer id,
-			@RequestParam(value = "name") String name,
-			@RequestParam(value = "number") String number,
-			@RequestParam(value = "user_id") Integer user_id
-			) {
-		account = new Account(id, name, number, user_id);
-		return ResponseEntity.ok(accountSvc.updateAccount(account));
+	public ResponseEntity<Object> updateAccount(
+			@RequestBody Account account) {
+		try {
+			Account updAccount = accountSvc.updateAccount(account);
+			if (updAccount == account) {
+				return (ResponseEntity.ok(updAccount));	
+			}
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
+		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Account Not Created");
 	}
 	
 	@DeleteMapping("/deleteAccount")
-	public ResponseEntity<String> deleteAccount(@RequestParam(value = "id") Integer id) {
-		return ResponseEntity.ok(accountSvc.deleteAccount(id));
+	public ResponseEntity<Object> deleteAccount(@RequestParam(value = "id") Integer id) {
+		try {
+			return ResponseEntity.ok(accountSvc.deleteAccount(id));	
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
 	}
 }

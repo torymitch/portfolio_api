@@ -40,6 +40,16 @@ public class BuyImpl implements BuySvc {
 	public void deleteBuy(Integer id) {
 		buyDao.deleteBuy(id);
 	}
+
+	@Override
+	public List<Buy> fetchBuysByAccountIdAndPositionId(Integer accountId, Integer positionId) {
+		return buyDao.fetchBuysByAccountIdAndPositionId(accountId, positionId);
+	}
+
+	@Override
+	public List<Buy> fetchBuysByAccountId(Integer id) {
+		return buyDao.fetchBuysByAccountId(id);
+	}
 	
 
 }

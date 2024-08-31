@@ -15,4 +15,8 @@ public interface AccountPositionSvc {
 	
 	public void deleteAccountPosition(Integer id);
 	
+	public AccountPosition addAccountPosition(AccountPosition accountPosition);
+
+	public Iterable<AccountPosition> findByAccountIdAndPositionId(Integer accountId, Integer positionId);
+	
 }
