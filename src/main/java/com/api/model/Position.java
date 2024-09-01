@@ -56,6 +56,7 @@ public class Position implements Serializable {
 		super();
 		this.name = "";
 		this.symbol = "";
+		this.shares = 0f;
 		this.cost = 0f;
 		this.price = 0f;
 		this.total = 0f;
