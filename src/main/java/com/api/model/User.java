@@ -58,41 +58,6 @@ public class User implements Serializable {
 		
 	}
 	
-//	public User(String first_name, String last_name) {
-//		super();
-//		this.first_name = first_name;
-//		this.last_name = last_name;
-//	}
-  
-	public User(String first_name, String last_name, String user_name, String phone_number, String email_address) {
-		super();
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.user_name = user_name;
-		this.phone_number = phone_number;
-		this.email_address = email_address;
-	}
-	
-	public User(Integer id, String first_name, String last_name, String user_name, String phone_number, String email_address) {
-		super();
-		this.id = id;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.user_name = user_name;
-		this.phone_number = phone_number;
-		this.email_address = email_address;
-	}
-	
-	public User(User user) {
-		super();
-		this.id = user.id;
-		this.first_name = user.first_name;
-		this.last_name = user.last_name;
-		this.user_name = user.user_name;
-		this.phone_number = user.phone_number;
-		this.email_address = user.email_address;
-	}
-
     @Override
 	public String toString() {
 		return "User [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", user_name=" + user_name

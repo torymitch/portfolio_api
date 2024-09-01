@@ -1,10 +1,10 @@
 package com.api.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.util.ObjectUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,58 +24,57 @@ public class UserController {
 	@Autowired
 	private UserSvc userSvc;
 	
-	@GetMapping("/user")
-	public String user() {
-		return "Access The User Collection";
-	}
-	
 	@GetMapping("/getUsers")
-	public ResponseEntity<Iterable<User>> getUsers() {
-		System.out.print("Retrieve All Users");
-		return ResponseEntity.ok(userSvc.getUsers());
+	public ResponseEntity<Object> getUsers() {
+		try {
+			return ResponseEntity.ok(userSvc.getUsers());
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
 	}
 	
 	@GetMapping("/getUser")
-	public Optional<User> getUser(@RequestParam(value = "id") Integer id) {
-		
-		Optional<User> user = userSvc.getUserById(id);
-		return user;
+	public ResponseEntity<Object> getUser(@RequestParam(value = "id") Integer id) {
+		try {
+			return ResponseEntity.ok(userSvc.getUserById(id));
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
 	}
 	
 	@PostMapping("/addUser")
-	public ResponseEntity<User> addUser(
-			@RequestBody User user,
-			@RequestParam(value = "first_name") String first_name,
-			@RequestParam(value = "last_name") String last_name,
-			@RequestParam(value = "phone_number") String phone_number,
-			@RequestParam(value = "user_name") String user_name,
-			@RequestParam(value = "email_address") String email_address
-			
-		) {
-		user = new User(first_name, last_name, user_name, phone_number, email_address);
-		System.out.println("Add The User " + user);
-		user = userSvc.addUser(user);
-		return ResponseEntity.ok(user);
+	public ResponseEntity<Object> addUser(@RequestBody User user) {
+		try {
+			User newUser = userSvc.addUser(user);
+			if (!ObjectUtils.isEmpty(newUser)) {
+				return (ResponseEntity.ok(newUser));	
+			}
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
+		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("User Record Creation Failed");
 	}
 	
 	@PutMapping("/updateUser")
-	public ResponseEntity<User> updateUser(@RequestBody User user,
-			@RequestParam(value = "id") Integer id,
-			@RequestParam(value = "first_name") String first_name,
-			@RequestParam(value = "last_name") String last_name,
-			@RequestParam(value = "phone_number") String phone_number,
-			@RequestParam(value = "user_name") String user_name,
-			@RequestParam(value = "email_address") String email_address) {
-		user = new User(id, first_name, last_name, user_name, phone_number, email_address);
-		System.out.println("Add The User " + user);
-		user = userSvc.updateUser(user);
-		return ResponseEntity.ok(user);
+	public ResponseEntity<Object> updateUser(@RequestBody User user) {
+		try {
+			User updUser = userSvc.updateUser(user);
+			if (!ObjectUtils.isEmpty(updUser)) {
+				return (ResponseEntity.ok(updUser));	
+			}
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
+		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("User Record Update Failed");
 	}
 	
 	@DeleteMapping("/deleteUser")
-	public BodyBuilder deleteUser(@RequestParam(value = "id") Integer id) {
-		userSvc.deleteUser(id);
-		return ResponseEntity.ok();
+	public ResponseEntity<Object> deleteUser(@RequestParam(value = "id") Integer id) {
+		try {
+			return ResponseEntity.ok(userSvc.deleteUser(id));	
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body(e.getMessage());
+		}
 	}
 
 }

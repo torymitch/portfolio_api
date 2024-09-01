@@ -2,10 +2,11 @@
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/AccountController.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/AccountPositionController.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/BuyController.java
-/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/PortfolioController.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/PositionController.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/SellController.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/UserController.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/dto/Account/CreateAccountDto.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/dto/Account/UpdateAccountDto.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/model/Account.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/model/AccountPosition.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/model/Buy.java

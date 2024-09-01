@@ -55,17 +55,7 @@ public class Sell implements Serializable {
 		this.setSoldPrice(null);
 		this.setDate(null);
 	}
-	
-	public Sell(Integer accountId, Integer positionId, Float shares, 
-			Float soldPrice, LocalDate date) {
-		super();
-		this.setAccountId(accountId);
-		this.setPositionId(positionId);
-		this.setShares(shares);
-		this.setSoldPrice(soldPrice);
-		this.setDate(date);
-	}
-	
+		
 	@Override
 	public String toString() {
 		return "Sell [id=" + id + ", positionId=" + positionId + ", accountId=" + accountId + ", date=" + date
