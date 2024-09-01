@@ -6,7 +6,6 @@ com/api/service/impl/UserImpl.class
 com/api/repository/SellRepository.class
 com/api/service/impl/PositionImpl.class
 com/api/model/AccountPosition.class
-com/api/controller/PortfolioController.class
 com/api/service/impl/AccountImpl.class
 com/api/service/dao/AccountDao.class
 com/api/repository/BuyRepository.class
@@ -18,8 +17,10 @@ com/api/service/impl/SellImpl.class
 com/api/ApiApplication.class
 com/api/model/User.class
 com/api/service/BuySvc.class
+com/api/dto/Account/UpdateAccountDto.class
 com/api/model/Sell.class
 com/api/service/dao/PositionDao.class
+com/api/dto/Account/CreateAccountDto.class
 com/api/model/Position.class
 com/api/service/UserSvc.class
 com/api/repository/UserRepository.class

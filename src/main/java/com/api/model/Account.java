@@ -2,13 +2,19 @@ package com.api.model;
 
 import java.io.Serializable;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-
+import org.hibernate.validator.constraints.Range;
 import org.springframework.stereotype.Component;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Component("Account")
@@ -18,11 +24,12 @@ public class Account implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private Integer id;
 	private String name;
 	private String number;
 	private Integer user_id;
-
+	
 	public Integer getId() { return id; }
 	public void setId(Integer id) { this.id = id; }
 
@@ -41,10 +48,10 @@ public class Account implements Serializable {
 	
 	public Account() {
 		super();
-		this.id = -1;
+		this.id = null;
 		this.name = "";
 		this.number = "";
-		this.user_id = -1;
+		this.user_id = null;
 		
 	}
 	
