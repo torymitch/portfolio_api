@@ -3,13 +3,16 @@ com/api/service/dao/AccountPositionDao.class
 com/api/service/AccountPositionSvc.class
 com/api/model/Account.class
 com/api/service/impl/UserImpl.class
+com/api/dto/Position/CreatePositionDto.class
 com/api/repository/SellRepository.class
 com/api/service/impl/PositionImpl.class
+com/api/dto/Position/UpdatePositionDto.class
 com/api/model/AccountPosition.class
 com/api/service/impl/AccountImpl.class
 com/api/service/dao/AccountDao.class
 com/api/repository/BuyRepository.class
 com/api/service/dao/BuyDao.class
+com/api/exception/DtoValidationExceptionHandler.class
 com/api/service/dao/SellDao.class
 com/api/repository/PositionRepository.class
 com/api/service/impl/BuyImpl.class
@@ -28,6 +31,7 @@ com/api/model/Portfolio.class
 com/api/service/PositionSvc.class
 com/api/controller/BuyController.class
 com/api/model/Buy.class
+com/api/dto/User/CreateUserDto.class
 com/api/controller/SellController.class
 com/api/repository/AccountRepository.class
 com/api/service/SellSvc.class

@@ -1,5 +1,6 @@
 package com.api.controller;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.api.dto.Account.CreateAccountDto;
+import com.api.dto.User.CreateUserDto;
 import com.api.model.User;
 import com.api.service.UserSvc;
+
+import jakarta.validation.Valid;
 
 @CrossOrigin
 @RestController
@@ -23,6 +28,11 @@ public class UserController {
 	
 	@Autowired
 	private UserSvc userSvc;
+	
+	@Autowired 
+	private User user;
+	
+	
 	
 	@GetMapping("/getUsers")
 	public ResponseEntity<Object> getUsers() {
@@ -43,8 +53,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/addUser")
-	public ResponseEntity<Object> addUser(@RequestBody User user) {
+	public ResponseEntity<Object> addUser(@Valid @RequestBody CreateUserDto createUserDto) {
 		try {
+			
+			BeanUtils.copyProperties(createUserDto, user);
 			User newUser = userSvc.addUser(user);
 			if (!ObjectUtils.isEmpty(newUser)) {
 				return (ResponseEntity.ok(newUser));	

@@ -4,10 +4,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
-import com.api.dto.Account.CreateAccountDto;
 import com.api.model.Account;
-
-import jakarta.validation.Valid;
 
 @Component("accountSvc")
 public interface AccountSvc {

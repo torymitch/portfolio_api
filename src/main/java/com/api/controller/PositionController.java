@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.dto.CreatePositionDto;
-import com.api.dto.UpdatePositionDto;
 import com.api.dto.Account.CreateAccountDto;
+import com.api.dto.Position.CreatePositionDto;
+import com.api.dto.Position.UpdatePositionDto;
 import com.api.model.Position;
 import com.api.service.PositionSvc;
 
@@ -91,21 +91,4 @@ public class PositionController {
 			return ResponseEntity.status(500).body(e.getMessage());
 		}
 	}	
-	
-//	@ResponseStatus(HttpStatus.BAD_REQUEST)
-//	@ExceptionHandler(MethodArgumentNotValidException.class)
-//	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-//		
-//		Map<String, String> errors = new HashMap<>();
-//		
-//		ex.getBindingResult().getAllErrors().forEach((error) -> {
-//			String fieldName = ((FieldError) error).getField();
-//			String errorMessage = error.getDefaultMessage();
-//			errors.put(fieldName, errorMessage);
-//		});
-//		
-//		return errors;
-//		
-//	}
-	
 }

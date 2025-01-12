@@ -7,6 +7,10 @@
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/controller/UserController.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/dto/Account/CreateAccountDto.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/dto/Account/UpdateAccountDto.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/dto/Position/CreatePositionDto.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/dto/Position/UpdatePositionDto.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/dto/User/CreateUserDto.java
+/Users/torymitch/Projects/portfolio_api/src/main/java/com/api/exception/DtoValidationExceptionHandler.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/model/Account.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/model/AccountPosition.java
 /Users/torymitch/Projects/portfolio_api/src/main/java/com/api/model/Buy.java
